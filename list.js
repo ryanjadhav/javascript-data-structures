@@ -1,7 +1,7 @@
 function List() {
   this.listSize = 0;
   this.pos = 0;
-  this.dataStore = []; // initializes an empty array to store list elements
+  this.dataStore = [];
 }
 
 List.prototype.append = function(element) {
@@ -10,7 +10,7 @@ List.prototype.append = function(element) {
 }
 
 List.prototype.find = function(element) {
-  for (var i = 0, len = this.dataStore.length; i++) {
+  for (var i = 0, len = this.dataStore.length; i < len; i++) {
     if (this.dataStore[i] === element) {
       return i;
     }
@@ -53,7 +53,7 @@ List.prototype.clear = function() {
 }
 
 List.prototype.contains = function(element) {
-  for (var i = 0, len = this.dataStore.length; i++) {
+  for (var i = 0, len = this.dataStore.length; i < len; i++) {
     if (this.dataStore[i] === element) {
       return true;
     }
@@ -62,18 +62,17 @@ List.prototype.contains = function(element) {
 }
 
 List.prototype.front = function() {
-  return this.pos = 0;
+  this.pos = 0;
 }
 
 List.prototype.end = function() {
-  return this.pos = this.listSize - 1;
+  this.pos = this.listSize - 1;
 }
 
 List.prototype.prev = function() {
   if (this.pos > 0) {
     --this.pos;
   }
-  return this.pos;
 }
 
 List.prototype.next = function() {
@@ -88,10 +87,7 @@ List.prototype.currPos = function() {
 }
 
 List.prototype.moveTo = function(position) {
-  if (position < 0 || position > this.listSize) {
-    return false;
-  }
-  return this.pos = position;
+  this.pos = position;
 }
 
 List.prototype.getElement = function() {
